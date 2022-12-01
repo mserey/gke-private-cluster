@@ -4,7 +4,7 @@ export PROJECT_ID=$(gcloud config list --format 'value(core.project)')
 export REGION=us-central1
 export ZONE=a
 export SUBNET_RANGE=10.128.0.0/20 
-export CLUSTER_NAME=k8s
+export CLUSTER_NAME=gke
 
 gcloud compute networks create k8s-vpc \
 --project=$PROJECT_ID \
