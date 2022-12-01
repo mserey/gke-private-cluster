@@ -1,7 +1,7 @@
 export PROJECT_ID=$(gcloud config list --format 'value(core.project)')
 export REGION=us-central1
 export ZONE=a
-export CLUSTER_NAME=k8s
+export CLUSTER_NAME=gke
 
 gcloud container clusters get-credentials $CLUSTER_NAME \
     --project=$PROJECT_ID \
@@ -10,7 +10,7 @@ gcloud container clusters get-credentials $CLUSTER_NAME \
 kubectl config set-context k8s
 
 export MY_IP=$(curl ipinfo.io/ip)
-gcloud container clusters update "k8s" \
+gcloud container clusters update $CLUSTER_NAME \
     --enable-master-authorized-networks \
     --master-authorized-networks $MY_IP/32 \
     --zone $REGION-$ZONE
